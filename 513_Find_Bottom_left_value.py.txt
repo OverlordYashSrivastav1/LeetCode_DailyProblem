@@ -1,0 +1,25 @@
+class Solution:
+    def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+
+        op = 0
+        md = -1
+        
+
+        def help(node,dep):
+
+            nonlocal op,md
+
+            if not node:
+                return 
+                        
+            if md<dep:
+
+                md = dep
+                op = node.val
+            
+            help(node.left,dep+1)
+            help(node.right,dep+1)
+            
+            
+        help(root,0)
+        return op
